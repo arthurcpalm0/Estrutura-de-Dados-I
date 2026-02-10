@@ -1,2 +1,2 @@
-# 3-semestre
-Conteúdo do terceiro semestre de ciência da computação
+# Estrutura-De-Dados-I
+Conteúdo da aula de estrutura de dados I
