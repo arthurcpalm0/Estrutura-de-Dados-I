@@ -93,6 +93,19 @@ public class LinkedList <T>{
         }
     }
 
+    public void inverte(){
+        Node<T> nodeAnt = null;
+        Node<T> node = head;
+        Node<T> nodeProx = null;
+        while (node!=null){
+            nodeProx = node.getProx();
+            node.setProx(nodeAnt);
+            nodeAnt = node;
+            node = nodeProx;
+        }
+        head = nodeAnt;
+    }
+
     @Override
 	public String toString() {
 		

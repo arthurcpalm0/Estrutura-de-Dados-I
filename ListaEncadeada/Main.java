@@ -7,5 +7,7 @@ public class Main{
         l.insertTail(4);
         l.insert(6,2);
         System.out.println(l);
+        l.inverte();
+        System.out.println(l);
     }
 }
