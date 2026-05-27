@@ -1,13 +1,23 @@
 public class Main{
     public static void main(String[] args) {
-        LinkedList l = new LinkedList<Object>();
-        l.insert(5,3);
-        System.out.println(l);
-        l.insertHead(3);
-        l.insertTail(4);
-        l.insert(6,2);
-        System.out.println(l);
-        l.inverte();
-        System.out.println(l);
+        try{
+            LinkedList l = new LinkedList<Integer>();
+            l.insertTail(1);
+            l.insertTail(2);
+            l.insertTail(3);
+            l.insertTail(4);
+            l.insertTail(6);
+            l.insertTail(7);
+            l.insertTail(8);
+            l.insertAsc(9);
+            l.insertAsc(0);
+            l.insertAsc(67);
+            l.insertAsc(4);
+            l.insertAsc(5);
+            System.out.println(l);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

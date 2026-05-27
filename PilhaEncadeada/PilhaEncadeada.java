@@ -11,23 +11,33 @@ public class PilhaEncadeada <T>{
         return size==0;
     }
 
+    public boolean isFull(){
+        Node<T> aux = new Node<T>();
+        return aux == null;
+    }
+
     public boolean push(T data){
-        Node<T> node = new Node<T>(data, null);
-        if (size>0){
-            node.setProx(topo);
+        if (!isFull()){
+            Node<T> node = new Node<T>(data, null);
+            if (isEmpty()){
+                topo = node;
+            }
+            else{
+                node.setProx(topo);
+                topo = node;
+            }
+            size++;
+            return true;
         }
-        topo = node;
-        size++;
-        return true;
+        return false;
     }
 
     public T pop() throws Exception{
         if (!IsEmpty()){
-            Node<T> pAnda = topo;
-            topo = pAnda.getProx();
-            pAnda.setProx(null);
-            return pAnda.getData();
-            
+            Node<T> node = topo;
+            topo = topo.getProx();
+            node.setProx(null);
+            return node.getData();  
         }
         else{
             throw new Exception("Underflow");

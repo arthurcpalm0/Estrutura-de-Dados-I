@@ -1,4 +1,4 @@
-public class LinkedList <T>{
+public class LinkedList <T extends Comparable<T>>{
     private Node<T> head;
     private int size;
 
@@ -104,6 +104,55 @@ public class LinkedList <T>{
             node = nodeProx;
         }
         head = nodeAnt;
+    }
+
+    public void merge(LinkedList<T> list) throws Exception{
+        if (!isEmpty() && !list.isEmpty()){
+            Node<T> n1 = list.getHead();
+            int cont = 2;
+            while (n1!=null&&cont<size+1){
+                insert(n1.getData(), cont);
+                cont+=2;
+                n1 = n1.getProx();
+            }
+            if (n1!=null){
+                while (n1!=null){
+                    insertTail(n1.getData());
+                    n1 = n1.getProx();
+                }
+            }
+        }
+        else{
+            throw new Exception ("Erro");
+        }
+    }
+
+    public boolean insertAsc(T data){
+        if(!isFull()){
+            Node<T> node = new Node<T>(data,null);
+            if (isEmpty()){
+                head = node;
+            }
+            else{
+                Node<T> pAnda = head;
+                Node<T> pAnt = null;
+                while (pAnda!=null && data.compareTo(pAnda.getData())>0){
+                    pAnt = pAnda;
+                    pAnda = pAnda.getProx();
+                }
+                if (pAnda == head){
+                    node.setProx(head);
+                    head = node;
+                }
+                else{
+                    pAnt.setProx(node);
+                    node.setProx(pAnda);
+                }
+            }
+            size++;
+            return true;
+        }
+        return false;
     }
 
     @Override
